@@ -1,10 +1,5 @@
-export const graphStyle = (
-  color: string,
-  line: string,
-  point: string,
-  area: string
-) =>
-  `
+export const graphStyle = (color: string, line: string, point: string, area: string) =>
+    `
     .ct-label {
       fill: #${color};
       color: #${color};
@@ -115,3 +110,19 @@ export const graphStyle = (
       transform: rotate(-90deg)
     }
     `;
+
+/** Unused style for dates feature #85 */
+export const diagonalTiltStyle = () => {
+    return `
+    .ct-label.ct-horizontal.ct-end {
+      transform: rotate(-30deg);
+      -webkit-transform: rotate(-30deg);
+      -moz-transform: rotate(-30deg);
+      -o-transform: rotate(-30deg);
+      -ms-transform: rotate(-30deg);
+      transform-box: fill-box;
+      transform-origin: 100% 0;
+      text-anchor: end;
+    }
+  `;
+};

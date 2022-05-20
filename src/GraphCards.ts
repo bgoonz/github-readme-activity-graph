@@ -6,6 +6,7 @@ export class Card {
     constructor(
         private readonly height: number,
         private readonly width: number,
+        private readonly radius: number,
         private readonly colors: Colors,
         private readonly title = '',
         private readonly area = false
@@ -42,19 +43,19 @@ export class Card {
     }
 
     /** Unused Code ref #85 */
-    private getContrubutionDates() {
-        const days = [];
-        for (const date = new Date(); days.length < 31; date.setDate(date.getUTCDate() - 1)) {
-            const current = new Date(date);
-            days.push(
-                current.toLocaleString('default', { month: 'short' }) +
-                    ' ' +
-                    current.getUTCDate().toString()
-            );
-        }
+    // private getContrubutionDates() {
+    //     const days = [];
+    //     for (const date = new Date(); days.length < 31; date.setDate(date.getUTCDate() - 1)) {
+    //         const current = new Date(date);
+    //         days.push(
+    //             current.toLocaleString('default', { month: 'short' }) +
+    //                 ' ' +
+    //                 current.getUTCDate().toString()
+    //         );
+    //     }
 
-        return days.reverse();
-    }
+    //     return days.reverse();
+    // }
 
     async buildGraph(contributions: number[]): Promise<string> {
         //Options to pass in createGraph function
@@ -72,6 +73,7 @@ export class Card {
             width: this.width,
             colors: this.colors,
             title: this.title,
+            radius: this.radius,
             line,
         };
 

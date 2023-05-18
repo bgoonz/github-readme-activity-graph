@@ -4,13 +4,15 @@ export let fakeQueryString = [
     {
         username: 'githubusername',
         radius: 8,
+        height: 400,
         hide_title: false,
         custom_title: undefined,
-        title_color: "ffffff",
+        title_color: 'ffffff',
     },
     {
         username: 'githubusername',
         radius: -10,
+        height: 100,
         bg_color: '44475a',
         hide_title: false,
         custom_title: undefined,
@@ -18,6 +20,7 @@ export let fakeQueryString = [
     {
         username: 'githubusername',
         radius: 35,
+        height: 800,
         bg_color: '44475a',
         color: '000000',
         hide_title: false,
@@ -88,6 +91,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 8,
+        height: 400,
         colors: {
             areaColor: '9e4c98',
             bgColor: 'ffcfe9',
@@ -103,6 +107,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 0,
+        height: 200,
         colors: {
             areaColor: '9e4c98',
             bgColor: '44475a',
@@ -118,6 +123,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 16,
+        height: 600,
         colors: {
             areaColor: '9e4c98',
             bgColor: '44475a',
@@ -133,6 +139,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 0,
+        height: 420,
         colors: {
             areaColor: '9e4c98',
             bgColor: '44475a',
@@ -148,6 +155,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 0,
+        height: 420,
         colors: {
             areaColor: '9e4c98',
             bgColor: '44475a',
@@ -163,6 +171,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 0,
+        height: 420,
         colors: {
             areaColor: '9e4c98',
             bgColor: '44475a',
@@ -178,6 +187,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 0,
+        height: 420,
         colors: {
             areaColor: '9e4c98',
             bgColor: '44475a',
@@ -193,6 +203,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 0,
+        height: 420,
         colors: {
             areaColor: '9e4c98',
             bgColor: '44475a',
@@ -208,6 +219,7 @@ export let fakeQueryStringRes = [
     {
         username: 'githubusername',
         radius: 0,
+        height: 420,
         colors: {
             areaColor: '9e4c98',
             bgColor: '44475a',
@@ -243,34 +255,23 @@ export let fakeGraphArgs: GraphArgs = {
 export let options = {
     width: 10,
     height: 5,
-    axisY: {
-        title: 'Contributions',
-        onlyInteger: true,
-        offset: 70,
-        labelOffset: {
-            y: 4.5,
-        },
+    radius: 5,
+    colors: {
+        areaColor: 'ff79c6',
+        bgColor: '44475a',
+        borderColor: 'ffffff',
+        color: 'f8f8f2',
+        titleColor: 'f8f8f2',
+        lineColor: 'ff79c6',
+        pointColor: 'bd93f9',
     },
-    axisX: {
-        title: 'Days',
-        offset: 50,
-        labelOffset: {
-            x: -4.5,
-        },
-    },
-    chartPadding: {
-        top: 80,
-        right: 50,
-        bottom: 20,
-        left: 20,
-    },
-    showArea: false,
-    fullWidth: true,
+    title: '',
+    area: false,
 };
 
 export const expectedQuery = (username: string, from: string, to: string) => {
-        return {
-            query: `
+    return {
+        query: `
               query userInfo($LOGIN: String!, $FROM: DateTime!, $TO: DateTime!) {
                 user(login: $LOGIN) {
                   name
@@ -287,12 +288,12 @@ export const expectedQuery = (username: string, from: string, to: string) => {
                 }
               }
             `,
-            variables: {
-                LOGIN: username,
-                FROM: from,
-                TO: to,
-            },
-        };
+        variables: {
+            LOGIN: username,
+            FROM: from,
+            TO: to,
+        },
+    };
 };
 
 export const dummyWeeksData = [
